@@ -17,8 +17,7 @@ const AppRouter = () => {
     const { checking } = useCheckUser()
 
     if (checking) return <Loading />
-
-
+    
     return (
         <Routes>
             <Route element={<PublicRouter />}>

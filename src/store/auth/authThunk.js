@@ -1,13 +1,12 @@
 import axios from "axios"
 import { checkingCredentials, login, logout } from "./authSlice"
-import { API_SECURITY } from "../api"
 
 export const authCheckingCredentials = (email1, password1) => {
     return async (dispatch) => {
         try {
             dispatch(checkingCredentials())
             const response = await axios({
-                url: `${API_SECURITY}/api/v1/auth/login`,
+                url: `${import.meta.env.VITE_BASE_API_SECURITY}/api/v1/auth/login`,
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -36,7 +35,7 @@ export const authCheckingCredentialsGoogle = (googleToken) => {
         try {
             dispatch(checkingCredentials())
             const response = await axios({
-                url: `${API_SECURITY}/api/v1/auth/google`,
+                url: `${import.meta.env.VITE_BASE_API_SECURITY}/api/v1/auth/google`,
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -65,7 +64,7 @@ export const authCheckingCredentialsRegister = (email1, password1) => {
         try {
             dispatch(checkingCredentials())
             const response = await axios({
-                url: `${API_SECURITY}/api/v1/auth/register`,
+                url: `${import.meta.env.VITE_BASE_API_SECURITY}/api/v1/auth/register`,
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

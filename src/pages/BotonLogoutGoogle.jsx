@@ -11,7 +11,8 @@ const BotonLogoutGoogle = () => {
         google.accounts.id.disableAutoSelect();
         // Puedes manejar el estado del usuario aquí o en otra parte de tu aplicación
         google.accounts.id.revoke(localStorage.getItem('email'), done => {
-            localStorage.clear();
+            localStorage.removeItem('email');
+                    localStorage.removeItem('token');
             dispatch(logout({ errorMessage: null }))
         })
     }

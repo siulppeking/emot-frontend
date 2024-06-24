@@ -20,7 +20,13 @@ const SigninPage = () => {
 
     useEffect(() => {
         if (status == 'authenticated' && !checking) {
-            navigate('/admin', { replace: true });
+
+            const lastPath = localStorage.getItem('lastPath') || '/admin';
+            navigate(lastPath, {
+                replace: true
+            })
+
+            //navigate('/admin', { replace: true });
         }
     }, [status])
 

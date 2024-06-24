@@ -1,4 +1,4 @@
-import svg from '../assets/react.svg';
+import svg from '../assets/vite.svg';
 
 import './loading.css';
 

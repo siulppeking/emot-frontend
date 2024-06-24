@@ -11,7 +11,8 @@ const Logout = () => {
         google.accounts.id.disableAutoSelect();
 
         google.accounts.id.revoke(localStorage.getItem('email'), done => {
-            localStorage.clear();
+            localStorage.removeItem('email');
+            localStorage.removeItem('token');
             dispatch(logout({ errorMessage: null }))
         });
     };

@@ -1,7 +1,11 @@
 import { useSelector } from "react-redux";
-import { Navigate, Outlet } from "react-router-dom";
+import { Navigate, Outlet, useLocation } from "react-router-dom";
 
 const PublicRouter = () => {
+    //const { pathname, search } = useLocation();
+    //const lastPath = pathname + search;
+    //localStorage.setItem('lastPath', lastPath);
+
     console.log('PublicRouter');
     //const { status, checking } = useSelector(state => state.auth);
 

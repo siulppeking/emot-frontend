@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { checkingCredentials, login, logout } from "../store/auth/authSlice";
 import { useEffect } from "react";
-import { API_SECURITY } from "../store/api";
 import axios from "axios";
 
 export const useCheckUser = () => {
@@ -15,7 +14,7 @@ export const useCheckUser = () => {
             if (token !== null) {
                 try {
                     const response = await axios({
-                        url: `${API_SECURITY}/api/v1/auth/check`,
+                        url: `${import.meta.env.VITE_BASE_API_SECURITY}/api/v1/auth/check`,
                         method: 'GET',
                         headers: {
                             'Authorization': token,
@@ -26,7 +25,8 @@ export const useCheckUser = () => {
                     dispatch(login({ name, username, email }))
                 } catch (error) {
                     dispatch(logout({ errorMessage: null }))
-                    localStorage.clear()
+                    localStorage.removeItem('email');
+                    localStorage.removeItem('token');
                 }
             } else {
                 dispatch(logout({ errorMessage: null }))

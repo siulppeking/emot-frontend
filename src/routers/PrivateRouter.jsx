@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import { Navigate, Outlet, useLocation } from "react-router-dom";
+import NavBarPrivate from "../ui/NavBarPrivate";
 
 const PrivateRouter = () => {
 
@@ -11,8 +12,12 @@ const PrivateRouter = () => {
     if (status === 'no-authenticated' && !checking) return <Navigate to="/auth/login" replace />;
 
     console.log('PrivateRouter');
-    {/* <NavbarPrivate /> */ }
-    return <Outlet />;
+
+
+    return <>
+        <NavBarPrivate />
+        <Outlet />
+    </>;
 }
 
 export default PrivateRouter

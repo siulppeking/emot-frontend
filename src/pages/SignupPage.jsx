@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { authCheckingCredentialsRegister } from '../store/auth/thunk';
+import { authCheckingCredentialsRegister } from '../store/auth/authThunk';
 
 const SignupPage = () => {
 

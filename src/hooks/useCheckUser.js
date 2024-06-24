@@ -26,6 +26,7 @@ export const useCheckUser = () => {
                     dispatch(login({ name, username, email }))
                 } catch (error) {
                     dispatch(logout({ errorMessage: null }))
+                    localStorage.clear()
                 }
             } else {
                 dispatch(logout({ errorMessage: null }))

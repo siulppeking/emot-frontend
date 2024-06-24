@@ -1,11 +1,10 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
-import { authCheckingCredentials, authCheckingCredentialsGoogle } from '../store/auth/thunk';
 import { useDispatch, useSelector } from 'react-redux';
 import { Loading } from '../components/Loading';
-import SignIn from './SignIn';
 import BotonLoginGoogle from './BotonLoginGoogle';
+import { authCheckingCredentials } from '../store/auth/authThunk';
 
 const SigninPage = () => {
 
@@ -15,14 +14,12 @@ const SigninPage = () => {
         errors
     } } = useForm();
 
-    const { status, errorMessage } = useSelector(state => state.auth);
-
-    const isCheckingAuthentication = useMemo(() => status === 'checking', [status])
+    const { status, checking, errorMessage } = useSelector(state => state.auth);
 
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (status == 'authenticated') {
+        if (status == 'authenticated' && !checking) {
             navigate('/admin', { replace: true });
         }
     }, [status])
@@ -58,14 +55,14 @@ const SigninPage = () => {
                                     {...register('password', { required: true })}
                                 />
                                 {errors.password && <p className='text-danger'>Password is required</p>}
-                                <button className="btn btn-outline-success mt-2" type="submit" disabled={isCheckingAuthentication}>
+                                <button className="btn btn-outline-success mt-2" type="submit" disabled={checking}>
                                     Login
                                 </button>
                                 <Link to={'/'} className="btn btn-outline-warning mt-2 ms-2">
                                     Home
                                 </Link>
                                 <p className="text-start text-info mt-2">
-                                    Don't have an account? <Link to="/auth/register" disabled={isCheckingAuthentication}>Register</Link>
+                                    Don't have an account? <Link to="/auth/register" disabled={checking}>Register</Link>
                                 </p>
                                 <BotonLoginGoogle />
                             </form>

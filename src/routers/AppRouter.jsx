@@ -10,6 +10,7 @@ import PageNotFound from '../ui/PageNotFound'
 import AdminPage from '../pages/AdminPage'
 import { Loading } from '../components/Loading'
 import { useCheckUser } from '../hooks/useCheckUser'
+import AboutPage from '../pages/AboutPage'
 
 const AppRouter = () => {
 
@@ -22,6 +23,7 @@ const AppRouter = () => {
         <Routes>
             <Route element={<PublicRouter />}>
                 <Route path="/" element={<HomePage />} />
+                <Route path="/about" element={<AboutPage />} />
                 <Route path="/auth/login" element={<SigninPage />} />
                 <Route path="/auth/register" element={<SignupPage />} />
             </Route>

@@ -8,6 +8,7 @@ const HomePage = () => {
         <div>HomePage EMOT</div>
         <hr />
         <Link className='btn btn-success' to='/auth/login' replace>Login</Link>
+        <Link className='btn btn-success' to='/about' replace>About Page</Link>
       </div>
     </>
   )

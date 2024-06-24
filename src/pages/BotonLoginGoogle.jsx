@@ -1,7 +1,7 @@
 // src/components/BotonLoginGoogle.js
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { authCheckingCredentialsGoogle } from '../store/auth/thunk';
+import { authCheckingCredentialsGoogle } from '../store/auth/authThunk';
 
 const BotonLoginGoogle = () => {
 
